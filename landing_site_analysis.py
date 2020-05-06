@@ -1,19 +1,28 @@
 """
-Data source:
-https://grs.lpl.arizona.edu/specials/Smoothed_rebinned_map_data
 
-More info:
-https://grs.lpl.arizona.edu/latestresults.jsp
 """
 
 from mpl_toolkits.basemap import Basemap
 import numpy as np
 import matplotlib.pyplot as plt
 
+from vicar2png_python3 import process_metadata, extract_image
 
-def main():
+
+datapath = 'Data/'
+plotpath = 'Plots/'
+
+def elemental_abundances():
+	"""
+	Plot elemental abundances using .tab files from
+	https://grs.lpl.arizona.edu/specials/Smoothed_rebinned_map_data
+
+	More info:
+	https://grs.lpl.arizona.edu/latestresults.jsp
+	"""
+
 	#import data
-	fname = 'Data/Cl_SR_5x5.tab'
+	fname = f'{datapath}Elemental_abundances/Cl_SR_5x5.tab'
 
 	rawdata = np.loadtxt(fname)
 
@@ -66,9 +75,54 @@ def main():
 
 	plt.title('Cl concentration on Mars')
 
-	plt.savefig('Cl_concentration.png', dpi = 300, bbox_inches = 'tight')
+	plt.savefig(f'{plotpath}Cl_concentration.png', dpi = 300, bbox_inches = 'tight')
 	plt.close()
 	# plt.show()
+
+def load_VICAR_data(infile):
+	"""
+	Load VICAR data using a hack of the VICAR2PNG library
+	"""
+
+	try:
+		metadata_fd = open(infile, "r")
+	except (IOError, OSError) as e:
+		print(sys.stderr, "Could not open ", infile, "to process metadata.")
+		print(sys.stderr, e.message)
+		exit(1)
+
+	vicar_metadata = process_metadata(metadata_fd)
+
+	try:
+		image_fd = open(infile, "rb")
+	except (IOError, OSError) as e:
+		print(sys.stderr, "Could not open ", infile, "to process image.")
+		print(sys.stderr, e.message)
+		exit(1)
+
+	pixels = extract_image(vicar_metadata, image_fd)
+
+	return pixels
+
+def process_TES_mineral_maps():
+	"""
+	Data source: https://www.mars.asu.edu/data/
+	"""
+
+	vicar_fname = f'{datapath}VICAR_data/TES_Hematite_numeric.vicar'
+
+	vicar_pixels = load_VICAR_data(vicar_fname)
+
+	print(vicar_pixels)
+
+def process_MOLA_DEM():
+	"""
+	Data source: https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m
+	"""
+	pass
+
+def main():
+	process_TES_mineral_maps()
 
 
 
