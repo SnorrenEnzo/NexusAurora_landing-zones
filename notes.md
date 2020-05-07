@@ -13,10 +13,31 @@ https://github.com/jesstess/vicar2png
 - Mars MOLA DEM (2GB): https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m
 - TES mineral and thermal intertia maps (RGB only): https://www.mars.asu.edu/data/
 - Elemental abundances maps: https://grs.lpl.arizona.edu/latestresults.jsp (data download: https://grs.lpl.arizona.edu/specials/Smoothed_rebinned_map_data)
+- Crude TES Mars climate maps [link](http://planetologia.elte.hu/mcdd/climatemaps.html)
+- TES raw data [link](http://tes.asu.edu/products/index.html)
+	- mineralogy
+	- Albedo
+	- Thermal inertia
+	- Low spatial resolution of 3 x 6 km, high spectral resolution
+- THEMIS (Mars Odyssey) general research page (lots of data) [link](https://themis.asu.edu/researchers)
+	- Image product info: [link](http://static.mars.asu.edu/pds/ODTSDP_v1/document/sdpsis.pdf)
+	- High spatial resolution of 100 m, low spectral resolution.
+- Links to maps of all Mars images across all missions [link](https://themis.asu.edu/maps)  
+	Includes
+	- THEMIS
+	- HiRISE
+	- MOC
+	- CTS
+	- HRSC
+	- Viking
+- JMARS: all kinds of imagery easily accessible [link](https://jmars.mars.asu.edu/)
+
+### Papers
+- MRO/MCS column dust climatology [link](https://www.researchgate.net/publication/334558532_Martian_Year_34_Column_Dust_Climatology_from_Mars_Climate_Sounder_Observations_Reconstructed_Maps_and_Model_Simulations)
 
 #### MRO
 General information: [wikipedia](https://en.wikipedia.org/wiki/Mars_Reconnaissance_Orbiter#Instruments)
-- CRISM spectrometer - surface mineralogy: http://crism-map.jhuapl.edu/#  
+- CRISM spectrometer - surface mineralogy: [link](http://crism-map.jhuapl.edu/#)  
 	More general info ([source](crism-map.jhuapl.edu/popinterpret.php)):
 	> Compositional information on the surface is concentrated in four of the browse products (vnir_fem, ir_maf, ir_phy, and ir_hyd). Not all of the sites exhibit spectral evidence for mineralogical diversity. If a location is covered in dust, it appears red in vnir_fem and bland in the other products. Sites with diversity in igneous mineralogy will appear interesting in ir_maf. Sites with minerals formed by interaction of crustal rocks with liquid water will appear interesting in ir_phy and ir_hyd.
 
@@ -29,3 +50,12 @@ General information: [wikipedia](https://en.wikipedia.org/wiki/Mars_Reconnaissan
 - HiRISE/CTX imagery: https://www.uahirise.org/hiwish/browse
 	- HiRISE: ~50 cm resolution, RGB, low coverage
 	- CTX: ~6 m resolution, grayscale (500 - 800 nm), high coverage
+
+- Mars Climate Sounder (MCS)
+	[More info](https://www.planetary.org/explore/projects/mcs/)
+
+
+### TODO
+- TES maps
+- THEMIS maps (can apparently produce hematite maps and has been done for multiple regions before)
+- CRISM detailed mineralogy maps (see image to the right [here](https://themis.asu.edu/node/5390))
