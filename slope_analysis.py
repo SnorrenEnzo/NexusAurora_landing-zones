@@ -1,7 +1,10 @@
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 
+import os
+
+import matplotlib.pyplot as plt
+import matplotlib.image as mimg
 
 dataloc = 'JMARS_elevation_profiles/'
 
@@ -17,20 +20,26 @@ def main():
 	elevation profile.
 	3. Right click the plot and select "Save to CSV".
 	"""
-	data_fname = f'{dataloc}Arsia_mons_spiral_railway_height.csv'
-	plot_fname = 'Arsia_Mons_spiral_railway_gradient.png'
+	### Adjust input filenames here
+	data_fname = f'{dataloc}MOLA_elevation_profile_Hellas_east_along_Dao_Vallis.csv'
+	profile_image_fname = f'JMARS_screenshots/-.png'
+	plot_fname = 'Hellas_E_Dao_Vallis_railway_gradient.png'
 
+
+	#load data
 	df = pd.read_csv(data_fname)
+	print(df.columns)
 
 	distance = df['Distance (Km)'] #km
-	elevation = df['HRSC MOLA Blended DEM (200m)']/1000 #km
+	elevation = df['HRSC MOLA Blended DEM 200m v2']/1000 #km
 
+	#get gradient
 	dx = np.diff(distance)
 	dy = np.diff(elevation)
-
 	gradient = dy/dx
 
 
+	#plot
 	fig, ax = plt.subplots(figsize = (9, 4), nrows = 1, ncols = 2)
 	ax = ax.flatten()
 
@@ -42,12 +51,21 @@ def main():
 	ax[0].set_title('Profile gradient')
 
 
-	ax[1].plot(df['Longitude'], df['Latitude'])
+	if os.path.exists(profile_image_fname):
+		#show here a screenshot of the DEM and the drawn profile
+		img = mimg.imread(profile_image_fname)
+		ax[1].imshow(img)
+		ax[1].set_xticks([])
+		ax[1].set_yticks([])
+		ax[1].set_title('Profile on DEM')
+	else:
+		ax[1].plot(df['Longitude'], df['Latitude'])
 
-	ax[1].grid(linestyle = ':')
-	ax[1].set_xlabel('Longitude')
-	ax[1].set_ylabel('Latitude')
-	ax[1].set_title('Profile path')
+		ax[1].grid(linestyle = ':')
+		ax[1].set_xlabel('Longitude')
+		ax[1].set_ylabel('Latitude')
+		ax[1].set_title('Profile path')
+
 
 	fig.savefig(f'Plots/{plot_fname}', dpi = 200, bbox_inches = 'tight')
 	plt.close()
