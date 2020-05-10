@@ -9,9 +9,10 @@ https://github.com/jesstess/vicar2png
 - [Openplanetarymap](https://openplanetarymap.netlify.app/): high resolution MOLA DEM and RGB maps with many locale names and good color scales.
 - [Other Mars maps](http://chrisherwig.org/planets/): high resolution MOLA DEM and RGB maps without place names but also good color scales.
 
-### Data sources (excluding MRO)
+### Data sources
 - Mars MOLA DEM (2GB): https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m
 	- Slopes: [link](https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA02809)
+	- Detailed descriptions of some maps: [link](https://pgda.gsfc.nasa.gov/products/62)
 - TES mineral and thermal intertia maps (RGB only): https://www.mars.asu.edu/data/
 - Elemental abundances maps: https://grs.lpl.arizona.edu/latestresults.jsp (data download: https://grs.lpl.arizona.edu/specials/Smoothed_rebinned_map_data)
 - Crude TES Mars climate maps [link](http://planetologia.elte.hu/mcdd/climatemaps.html)
