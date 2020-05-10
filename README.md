@@ -9,8 +9,9 @@ https://github.com/jesstess/vicar2png
 - [Openplanetarymap](https://openplanetarymap.netlify.app/): high resolution MOLA DEM and RGB maps with many locale names and good color scales.
 - [Other Mars maps](http://chrisherwig.org/planets/): high resolution MOLA DEM and RGB maps without place names but also good color scales.
 
-### Data sources
+### Data sources (excluding MRO)
 - Mars MOLA DEM (2GB): https://astrogeology.usgs.gov/search/map/Mars/GlobalSurveyor/MOLA/Mars_MGS_MOLA_DEM_mosaic_global_463m
+	- Slopes: [link](https://www.jpl.nasa.gov/spaceimages/details.php?id=PIA02809)
 - TES mineral and thermal intertia maps (RGB only): https://www.mars.asu.edu/data/
 - Elemental abundances maps: https://grs.lpl.arizona.edu/latestresults.jsp (data download: https://grs.lpl.arizona.edu/specials/Smoothed_rebinned_map_data)
 - Crude TES Mars climate maps [link](http://planetologia.elte.hu/mcdd/climatemaps.html)
@@ -32,10 +33,7 @@ https://github.com/jesstess/vicar2png
 	- Viking
 - JMARS: all kinds of imagery easily accessible [link](https://jmars.mars.asu.edu/)
 
-### Papers
-- MRO/MCS column dust climatology [link](https://www.researchgate.net/publication/334558532_Martian_Year_34_Column_Dust_Climatology_from_Mars_Climate_Sounder_Observations_Reconstructed_Maps_and_Model_Simulations)
-
-#### MRO
+#### MRO specific data
 General information: [wikipedia](https://en.wikipedia.org/wiki/Mars_Reconnaissance_Orbiter#Instruments)
 - CRISM spectrometer - surface mineralogy: [link](http://crism-map.jhuapl.edu/#)  
 	More general info ([source](crism-map.jhuapl.edu/popinterpret.php)):
@@ -54,6 +52,8 @@ General information: [wikipedia](https://en.wikipedia.org/wiki/Mars_Reconnaissan
 - Mars Climate Sounder (MCS)
 	[More info](https://www.planetary.org/explore/projects/mcs/)
 
+### Papers
+- MRO/MCS column dust climatology [link](https://www.researchgate.net/publication/334558532_Martian_Year_34_Column_Dust_Climatology_from_Mars_Climate_Sounder_Observations_Reconstructed_Maps_and_Model_Simulations)
 
 ### TODO
 - TES maps
