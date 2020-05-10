@@ -6,6 +6,9 @@ import os
 import matplotlib.pyplot as plt
 import matplotlib.image as mimg
 
+#for smoothing the data
+from scipy.ndimage.filters import gaussian_filter1d
+
 dataloc = 'JMARS_elevation_profiles/'
 
 
@@ -21,9 +24,9 @@ def main():
 	3. Right click the plot and select "Save to CSV".
 	"""
 	### Adjust input filenames here
-	data_fname = f'{dataloc}MOLA_elevation_profile_Hellas_east_along_Dao_Vallis.csv'
-	profile_image_fname = f'JMARS_screenshots/-.png'
-	plot_fname = 'Hellas_E_Dao_Vallis_railway_gradient.png'
+	data_fname = f'{dataloc}MOLA_elevation_profile_Hellas_NW.csv'
+	profile_image_fname = f'JMARS_screenshots/MOLA_DEM_Hellas_NW.png'
+	plot_fname = 'Hellas_NW_railway_gradient.png'
 
 
 	#load data
@@ -38,17 +41,24 @@ def main():
 	dy = np.diff(elevation)
 	gradient = dy/dx
 
+	#smooth the gradient
+	smooth_scale = 5 #km
+	#figure out the smoothing scale in array element units
+	print(f'Median sample spacing: {np.median(dx):0.02f} km')
+	smooth_scale_elements = smooth_scale/np.median(dx)
+	smooth_gradient = gaussian_filter1d(gradient, smooth_scale_elements)
+
 
 	#plot
 	fig, ax = plt.subplots(figsize = (9, 4), nrows = 1, ncols = 2)
 	ax = ax.flatten()
 
-	ax[0].plot(distance[1:], gradient*100, linewidth = 0.5)
+	ax[0].plot(distance[1:], smooth_gradient*100, linewidth = 0.5)
 	ax[0].grid(linestyle = ':')
 
 	ax[0].set_xlabel('Along profile distance [km]')
 	ax[0].set_ylabel('Gradient [%]')
-	ax[0].set_title('Profile gradient')
+	ax[0].set_title(f'Profile gradient smoothed at {smooth_scale} km scales')
 
 
 	if os.path.exists(profile_image_fname):
